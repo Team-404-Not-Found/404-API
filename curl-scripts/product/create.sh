@@ -17,7 +17,7 @@ curl "${API}${URL_PATH}" \
       "category": "'"${CATEGORY}"'",
       "inStock": "'"${INSTOCK}"'",
       "quantity": "'"${QUANTITY}"'",
-      "seller": "'"${SELLER}"'",
+      "seller": "'"${SELLER}"'"
     }
   }'
 
