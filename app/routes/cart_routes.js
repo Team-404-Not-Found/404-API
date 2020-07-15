@@ -14,7 +14,7 @@ const customErrors = require('../../lib/custom_errors')
 const handle404 = customErrors.handle404
 // we'll use this function to send 401 when a user tries to modify a resource
 // that's owned by someone else
-const requireOwnership = customErrors.requireOwnership
+// const requireOwnership = customErrors.requireOwnership
 
 // this is middleware that will remove blank fields from `req.body`, e.g.
 // { example: { title: '', text: 'foo' } } -> { example: { text: 'foo' } }
@@ -57,14 +57,14 @@ router.get('/products', (req, res, next) => {
 
 // CREATE
 // POST /products
-router.post('/products', requireToken, (req, res, next) => {
+router.post('/cart', requireToken, (req, res, next) => {
   // set owner of new example to be current user
-  req.body.product.owner = req.user.id
-
-  Cart.create(req.body.product)
+  req.body.cart.owner = req.user.id
+  console.log(req.user.id)
+  Cart.create(req.body.cart)
     // respond to succesful `create` with status 201 and JSON of new "product"
-    .then(product => {
-      res.status(201).json({ product: product.toObject() })
+    .then(cart => {
+      res.status(201).json({ cart: cart.toObject() })
     })
     // if an error occurs, pass it off to our error handler
     // the error handler needs the error message and the `res` object so that it
