@@ -2,9 +2,11 @@
 const express = require('express')
 // Passport docs: http://www.passportjs.org/docs/
 // const passport = require('passport')
+const mongoose = require('mongoose')
 
 // pull in Mongoose model for examples
-const Product = require('../models/product_model')
+const productSchema = require('../models/productSchema')
+const Product = mongoose.model('Product', productSchema)
 
 // this is a collection of methods that help us detect situations when we need
 // to throw a custom error

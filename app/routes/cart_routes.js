@@ -29,16 +29,16 @@ const router = express.Router()
 
 // INDEX
 // GET /products
-router.get('/products', (req, res, next) => {
+router.get('/carts', (req, res, next) => {
   Cart.find()
-    .then(products => {
+    .then(carts => {
       //  `examples` will be an array of Mongoose documents
       // we want to convert each one to a POJO, so we use `.map` to
       // apply `.toObject` to each one
-      return products.map(product => product.toObject())
+      return carts.map(cart => cart.toObject())
     })
   // respond with status 200 and JSON of the examples
-    .then(products => res.status(200).json({ products: products }))
+    .then(carts => res.status(200).json({ carts: carts }))
   // if an error occurs, pass it to the handler
     .catch(next)
 })
@@ -57,7 +57,7 @@ router.get('/products', (req, res, next) => {
 
 // CREATE
 // POST /products
-router.post('/cart', requireToken, (req, res, next) => {
+router.post('/carts', requireToken, (req, res, next) => {
   // set owner of new example to be current user
   req.body.cart.owner = req.user.id
   console.log(req.user.id)
