@@ -44,23 +44,19 @@ router.get('/carts', (req, res, next) => {
 })
 
 // SHOW
-// GET /examples/5a7db6c74d55bc51bdf39793
-// router.get('/examples/:id', requireToken, (req, res, next) => {
-// req.params.id will be set based on the `:id` in the route
-// Example.findById(req.params.id)
-//   .then(handle404)
-// if `findById` is succesful, respond with 200 and "example" JSON
-// .then(example => res.status(200).json({ example: example.toObject() }))
-// if an error occurs, pass it to the handler
-// .catch(next)
-// })
+// find by ownerID so that we can retrieve the correct cart when someone signs in.
+router.get('/carts/:owner_id', (req, res, next) => {
+
+  Cart.findOne({ owner: req.params.owner_id})
+    .then(handle404)
+    // if `findById` is succesful, respond with 200 and cart JSON
+    .then(cart => res.status(200).json({ cart: cart.toObject() }))
+    .catch(next)
+})
 
 // CREATE
 // POST /products
 router.post('/carts', (req, res, next) => {
-  // set owner of new example to be current user
-  console.log(req.body.cart.owner)
-  req.body.cart.owner = req.body.cart.owner
   Cart.create(req.body.cart)
     // respond to succesful `create` with status 201 and JSON of new "product"
     .then(cart => {
