@@ -26,7 +26,7 @@ const removeBlanks = require('../../lib/remove_blank_fields')
 // instantiate a router (mini app that only handles routes)
 const router = express.Router()
 
-// INDEX
+// CREATE
 
 router.post('/orders/:id', (req, res, next) => {
   let orderHistory = req.body.order
