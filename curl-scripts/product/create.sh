@@ -14,7 +14,7 @@ curl "${API}${URL_PATH}" \
       "description": "'"${DESCRIPTION}"'",
       "imageUrl": "'"${IMAGEURL}"'",
       "category": "'"${CATEGORY}"'",
-      "inStock": "'"${INSTOCK}"'",
+      "inCart": "'"${INCART}"'",
       "quantity": "'"${QUANTITY}"'",
       "seller": "'"${SELLER}"'"
     }

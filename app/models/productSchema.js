@@ -30,6 +30,10 @@ const productSchema = new mongoose.Schema({
   seller: {
     type: String,
     required: true
+  },
+  inCart: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: true
