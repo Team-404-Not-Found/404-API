@@ -79,4 +79,19 @@ router.delete('/carts/:id/item/:item_id', (req, res, next) => {
   // Product.findById(productId)
 })
 
+router.delete('/carts/:id', (req, res, next) => {
+  // console.log(req.body)
+  Cart.findOne({ owner: req.params.id })
+    .then(cart => {
+      cart.products.$pop()
+      return cart.save()
+    })
+  // send back 204 and no content if the deletion succeeded
+    .then(() => res.sendStatus(204))
+  // if an error occurs, pass it to the handler
+    .catch(next)
+
+  // Product.findById(productId)
+})
+
 module.exports = router
