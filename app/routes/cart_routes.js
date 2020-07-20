@@ -46,8 +46,7 @@ router.get('/carts', (req, res, next) => {
 // SHOW
 // find by ownerID so that we can retrieve the correct cart when someone signs in.
 router.get('/carts/:owner_id', (req, res, next) => {
-
-  Cart.findOne({ owner: req.params.owner_id})
+  Cart.findOne({ owner: req.params.owner_id })
     .then(handle404)
     // if `findById` is succesful, respond with 200 and cart JSON
     .then(cart => res.status(200).json({ cart: cart.toObject() }))
