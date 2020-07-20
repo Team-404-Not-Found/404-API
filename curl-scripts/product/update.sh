@@ -1,7 +1,8 @@
 #!/bin/bash
 
-API="http://localhost:4741"
+API="https://protected-gorge-91362.herokuapp.com"
 URL_PATH="/products"
+ID="5f10e3b265a6560017178f7e"
 
 curl "${API}${URL_PATH}/${ID}" \
   --include \
