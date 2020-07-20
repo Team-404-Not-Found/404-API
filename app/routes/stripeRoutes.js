@@ -1,6 +1,6 @@
 const express = require('express')
 
-const stripe = require('stripe')
+const stripe = require('stripe')('sk_test_51H6kFYHJE1XkBAfR517a7FNLn4PXCPbuIxGalk4jBc1rWNOhDSglqYIqabndBWPR1peAZDp5r9ViE6AZtZHPGVZk00jW627iWY')
 
 const customErrors = require('../../lib/custom_errors')
 
@@ -10,16 +10,16 @@ const removeBlanks = require('../../lib/remove_blank_fields')
 
 const router = express.Router()
 
-router.post('/pay', (req, res, next) => {
-  const {email} = req.body
-
-  stripe.paymentIntents.create({
-    ammount: 1000,
-    currentcy: 'usd',
+router.post('/pay', async (req, res) => {
+  let {email, amount} = req.body
+  amount *= 100
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: amount,
+    currency: 'usd',
     metadata: {integration_check: 'accept_a_payment'},
-    recepient_email: email
+    receipt_email: email
   })
-    .then(res => res.json({'client_secret': paymentIntent['client_secret']}))
+  res.json({'client_secret': paymentIntent['client_secret']})
 })
 
 module.exports = router
