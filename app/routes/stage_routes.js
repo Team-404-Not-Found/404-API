@@ -63,15 +63,16 @@ router.post('/carts/:id', (req, res, next) => {
 
 // PATCH
 // PATCH / cart
-router.patch('/carts/:id', (req, res, next) => {
+router.patch('/carts/:id/item/:item_id', (req, res, next) => {
+  console.log('are you even here?')
   let productData
   const cartId = req.params.id
-  const productId = req.body.item.id
+  const productId = req.params.item_id
   if (cartId) {
     Cart.findById(cartId)
       .then(handle404)
       .then(res => {
-        console.log(res)
+        console.log(res, 'peanuts are a nice thing for elephants')
         console.log(res.product.id(productId))
         return res.save()
       })
@@ -81,7 +82,7 @@ router.patch('/carts/:id', (req, res, next) => {
 })
 
 // DESTROY
-// DELETE /examples/5a7db6c74d55bc51bdf39793
+// DELETE
 router.delete('/carts/:id/item/:item_id', (req, res, next) => {
   // console.log(req.body)
   const productId = req.params.item_id

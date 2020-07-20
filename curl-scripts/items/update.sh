@@ -1,9 +1,11 @@
 #!/bin/bash
 
-API="http://localhost:4741"
-URL_PATH="/products"
+API="https://protected-gorge-91362.herokuapp.com"
+URL_PATH="/carts"
+cartId="5f11dc9ace1a870017fc34d7"
+ID="5f10e8f965a6560017178f87"
 
-curl "${API}${URL_PATH}/${ID}" \
+curl "${API}${URL_PATH}/${cartId}/item/${ID}" \
   --include \
   --request PATCH \
   --header "Content-Type: application/json" \
@@ -14,7 +16,7 @@ curl "${API}${URL_PATH}/${ID}" \
     "description": "'"${DESCRIPTION}"'",
     "imageUrl": "'"${IMAGEURL}"'",
     "category": "'"${CATEGORY}"'",
-    "inStock": "'"${INSTOCK}"'",
+    "inCart": "'"${INCART}"'",
     "quantity": "'"${QUANTITY}"'",
     "seller": "'"${SELLER}"'"
   }
