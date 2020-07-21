@@ -1,6 +1,6 @@
 const express = require('express')
 
-const stripe = require('stripe')('sk_test_51H6kFYHJE1XkBAfR517a7FNLn4PXCPbuIxGalk4jBc1rWNOhDSglqYIqabndBWPR1peAZDp5r9ViE6AZtZHPGVZk00jW627iWY')
+const stripe = require('stripe')('sk_test_51H7DjEJ3lyWOxdaDKOon2ojxqTdQnpXqsSazfDvGTJwamESKWaJ0TH9UwoH9i9woBAIlq9zTYuHnF4PDRLxO6biD00fE1UqvSl')
 
 const customErrors = require('../../lib/custom_errors')
 
