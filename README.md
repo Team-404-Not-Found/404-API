@@ -33,3 +33,22 @@ We would like to add more styling on the front end to make the web page more use
 
 ### Entity Relationship Diagram
 [Link to ERD](https://drive.google.com/file/d/1weiEl3-hrU5sNgg8z7U5xgMxnjcVziTv/view?usp=sharing)
+
+### Routes
+Cart Routes
+  Index (GET) get all carts, Show (GET) gets one cart, Create (POST) creates a cart (this is attached to a user, so that when a user is created, a cart is created that is connected to the user), Update (PATCH), No delete routes - carts are never deleted.
+
+History Routes
+  Create (POST).  This route is a POST route that saves a users order history
+
+Product Routes
+  Index (GET) get all products, Show (GET) gets one product, Create (POST) creates a product, Update (PATCH) a product, Delete route for deleting a product.
+
+Stage Routes - product / cart relationship Routes
+  Create/POST - finds a cart by it's id, then pushes a product (found by it's id) into the carts array
+  PATCH - finds a cart's id, then saves the updated product
+  DELETE - using the carts id and the product id, an item is deleted from the cart if found
+
+Stripe Route - A POST route that takes in a user email, and the amount of the purchase and sends it to the Stripe API.
+
+User Routes - routes for user create (sign up), User sign in, Patch (change password), and Delete (sign out), 
