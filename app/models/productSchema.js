@@ -21,10 +21,6 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  inStock: {
-    type: Boolean,
-    required: true
-  },
   quantity: {
     type: Number,
     require: true,
@@ -34,6 +30,10 @@ const productSchema = new mongoose.Schema({
   seller: {
     type: String,
     required: true
+  },
+  inCart: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: true

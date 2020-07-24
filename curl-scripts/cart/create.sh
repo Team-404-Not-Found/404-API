@@ -1,16 +1,15 @@
 #!/bin/bash
 
-API="http://localhost:4741"
-URL_PATH="/cart"
+API="https://protected-gorge-91362.herokuapp.com"
+URL_PATH="/carts"
 
 curl "${API}${URL_PATH}" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
-    --header "Authorization: Bearer ${TOKEN}" \
   --data '{
     "cart":{
-          "owner": "'"${OWNER}"'"
+      "owner": "'"${OWNERID}"'"
     }
   }'
 

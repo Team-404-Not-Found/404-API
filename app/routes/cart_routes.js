@@ -29,38 +29,33 @@ const router = express.Router()
 
 // INDEX
 // GET /products
-router.get('/products', (req, res, next) => {
+router.get('/carts', (req, res, next) => {
   Cart.find()
-    .then(products => {
+    .then(carts => {
       //  `examples` will be an array of Mongoose documents
       // we want to convert each one to a POJO, so we use `.map` to
       // apply `.toObject` to each one
-      return products.map(product => product.toObject())
+      return carts.map(cart => cart.toObject())
     })
   // respond with status 200 and JSON of the examples
-    .then(products => res.status(200).json({ products: products }))
+    .then(carts => res.status(200).json({ carts: carts }))
   // if an error occurs, pass it to the handler
     .catch(next)
 })
 
 // SHOW
-// GET /examples/5a7db6c74d55bc51bdf39793
-// router.get('/examples/:id', requireToken, (req, res, next) => {
-// req.params.id will be set based on the `:id` in the route
-// Example.findById(req.params.id)
-//   .then(handle404)
-// if `findById` is succesful, respond with 200 and "example" JSON
-// .then(example => res.status(200).json({ example: example.toObject() }))
-// if an error occurs, pass it to the handler
-// .catch(next)
-// })
+// find by ownerID so that we can retrieve the correct cart when someone signs in.
+router.get('/carts/:owner_id', (req, res, next) => {
+  Cart.findOne({ owner: req.params.owner_id })
+    .then(handle404)
+    // if `findById` is succesful, respond with 200 and cart JSON
+    .then(cart => res.status(200).json({ cart: cart.toObject() }))
+    .catch(next)
+})
 
 // CREATE
 // POST /products
-router.post('/cart', requireToken, (req, res, next) => {
-  // set owner of new example to be current user
-  req.body.cart.owner = req.user.id
-  console.log(req.user.id)
+router.post('/carts', (req, res, next) => {
   Cart.create(req.body.cart)
     // respond to succesful `create` with status 201 and JSON of new "product"
     .then(cart => {

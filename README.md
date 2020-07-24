@@ -1,143 +1,35 @@
-### User Stories:
+### Zebra In The Shade Application
+We created an e-commerce application that sells luxury products that can be bought using credit cards. This an exclusive application for exclusive individuals that have exceedingly high credit scores. Only credit cards without credit limits may be used. Please visit this website if the above description sounds like you.
 
-- As an unregistered user, I would like to sign up with email and password.
-- As a registered user, I would like to sign in with email and password.
-- As a signed in user, I would like to change password.
-- As a signed in user, I would like to sign out.
-- As an unregistered user, I would like to see all of the products.
-- As a signed in user, I would like to add and remove products from a shopping
-  cart.
-- As a signed in user, I would like to purchase products in a shopping cart
-  using [Stripe](https://stripe.com/docs/checkout).
-- As a signed in user, I would like to see all my past orders.
+### Technologies Used
+*   javaScript
+*   HTML
+*   CSS
+*   bootstrap
+*   flexbox
+*   JQuery
+*   JSON
+*   ajax
+*   Bash
+*   Express API
+*   Mongoose
+*   MongoDB
+*   handlebars
+*   Stripe
+*   React
 
+### Development Process
+[Link to Backend Server](https://protected-gorge-91362.herokuapp.com/)
+[Link to Frontend Repo](https://github.com/Team-404-Not-Found/ZEBRAINTHESHADE)
 
+We started by mapping out the ERD for the back end application and created user stories for our client application to better understand the work flow and how we could efficiently schedule our goals for each day in our project week. In our team of four, we would break into teams of 2 to either work on the front end or the back end of our project.
 
+We first created a schema for products and subsequently created a route for products to set up the relationship between the two. We did the same for Cart. In this process however, we had to pass data from the product to the cart. So we made the product schema a subdocument of the cart schema.
 
-### Authentication
+We wanted users to be able to view their order history. So we created an order schema and set up a route with it. However, to view the order history, we had to confirm that a payment was made. This is where we incorporated Stripe to our application to complete our user checkout experience.
 
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/sign-up`             | `users#signup`    |
-| POST   | `/sign-in`             | `users#signin`    |
-| PATCH  | `/change-password/` | `users#changepw`  |
-| DELETE | `/sign-out/`        | `users#signout`   |
+### Future Iterations
+We would like to add more styling on the front end to make the web page more user-friendly.
 
-#### POST /sign-up
-
-Request:
-
-```sh
-curl --include --request POST http://localhost:4741/sign-up \
-  --header "Content-Type: application/json" \
-  --data '{
-    "credentials": {
-      "email": "an@example.email",
-      "password": "an example password",
-      "password_confirmation": "an example password"
-    }
-  }'
-```
-
-```sh
-curl-scripts/sign-up.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 201 Created
-Content-Type: application/json; charset=utf-8
-
-{
-  "user": {
-    "id": 1,
-    "email": "an@example.email"
-  }
-}
-```
-
-#### POST /sign-in
-
-Request:
-
-```sh
-curl --include --request POST http://localhost:4741/sign-in \
-  --header "Content-Type: application/json" \
-  --data '{
-    "credentials": {
-      "email": "an@example.email",
-      "password": "an example password"
-    }
-  }'
-```
-
-```sh
-curl-scripts/sign-in.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-  "user": {
-    "id": 1,
-    "email": "an@example.email",
-    "token": "33ad6372f795694b333ec5f329ebeaaa"
-  }
-}
-```
-
-#### PATCH /change-password/
-
-Request:
-
-```sh
-curl --include --request PATCH http://localhost:4741/change-password/ \
-  --header "Authorization: Bearer $TOKEN" \
-  --header "Content-Type: application/json" \
-  --data '{
-    "passwords": {
-      "old": "an example password",
-      "new": "super sekrit"
-    }
-  }'
-```
-
-```sh
-TOKEN=33ad6372f795694b333ec5f329ebeaaa curl-scripts/change-password.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 204 No Content
-```
-
-#### DELETE /sign-out/
-
-Request:
-
-```sh
-curl --include --request DELETE http://localhost:4741/sign-out/ \
-  --header "Authorization: Bearer $TOKEN"
-```
-
-```sh
-TOKEN=33ad6372f795694b333ec5f329ebeaaa curl-scripts/sign-out.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 204 No Content
-```
-
-## [License](LICENSE)
-
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+### Entity Relationship Diagram
+[Link to ERD](https://drive.google.com/file/d/1weiEl3-hrU5sNgg8z7U5xgMxnjcVziTv/view?usp=sharing)
