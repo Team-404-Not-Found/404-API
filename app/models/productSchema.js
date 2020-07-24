@@ -34,6 +34,11 @@ const productSchema = new mongoose.Schema({
   inCart: {
     type: Boolean,
     default: false
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   }
 }, {
   timestamps: true
