@@ -96,6 +96,16 @@ router.post('/sign-in', (req, res, next) => {
     })
     .catch(next)
 })
+// GET
+// get user object to show order history
+router.get('/user-history/:id', (req, res, next) => {
+  // find user by Id
+  const userId = req.params.id
+  // return status 201, the email, and the new token and orderHistory
+  User.findById(userId)
+    .then(user => res.status(201).json({ user: user }))
+    .catch(next)
+})
 
 // CHANGE password
 // PATCH /change-password
@@ -137,5 +147,4 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
     .then(() => res.sendStatus(204))
     .catch(next)
 })
-
 module.exports = router
