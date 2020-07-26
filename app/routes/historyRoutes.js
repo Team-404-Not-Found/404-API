@@ -48,13 +48,5 @@ router.post('/orders/:id', (req, res, next) => {
     // can send an error message back to the client
     .catch(next)
 })
-router.get('/userHistory', (req, res, next) => {
-  User.find()
-    .then(user => {
-      return user.orderHistory.map(user => user.toObject())
-    })
-    .then(user => res.status(200).json({orderHistory: user}))
-    .catch(next)
-})
 
 module.exports = router

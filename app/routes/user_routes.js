@@ -98,7 +98,7 @@ router.post('/sign-in', (req, res, next) => {
 })
 // GET
 // get user object to show order history
-router.get('/user-history/:id', (req, res, next) => {
+router.get('/user-orders/:id', (req, res, next) => {
   // find user by Id
   const userId = req.params.id
   // return status 201, the email, and the new token and orderHistory

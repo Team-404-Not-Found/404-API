@@ -16,7 +16,8 @@ curl "${API}${URL_PATH}" \
       "category": "'"${CATEGORY}"'",
       "inCart": "'"${INCART}"'",
       "quantity": "'"${QUANTITY}"'",
-      "seller": "'"${SELLER}"'"
+      "seller": "'"${SELLER}"'",
+      "owner": "'"${OWNER}"'"
     }
   }'
 
