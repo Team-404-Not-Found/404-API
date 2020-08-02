@@ -2,7 +2,6 @@
 
 API="https://protected-gorge-91362.herokuapp.com"
 URL_PATH="/products"
-ID="5f10b61d9ae506a0f0d43c96"
 
 curl "${API}${URL_PATH}/${ID}" \
   --include \
