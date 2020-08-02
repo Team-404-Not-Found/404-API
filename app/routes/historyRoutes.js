@@ -42,7 +42,6 @@ router.post('/orders/:id', (req, res, next) => {
     .then(order => {
       res.status(201).json({ order: order.toObject() })
     })
-    .then(console.log('Order History Post Successful'))
     // if an error occurs, pass it off to our error handler
     // the error handler needs the error message and the `res` object so that it
     // can send an error message back to the client
