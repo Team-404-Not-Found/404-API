@@ -66,6 +66,7 @@ router.post('/sign-in', (req, res, next) => {
   // find a user based on the email that was passed
   User.findOne({ email: req.body.credentials.email })
     .then(record => {
+      console.log(record)
       // if we didn't find a user with that email, send 401
       if (!record) {
         throw new BadCredentialsError()
