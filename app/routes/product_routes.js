@@ -17,6 +17,7 @@ const handle404 = customErrors.handle404
 // we'll use this function to send 401 when a user tries to modify a resource
 // that's owned by someone else
 // const requireOwnership = customErrors.requireOwnership
+const requireOwnership = customErrors.requireOwnership
 
 // this is middleware that will remove blank fields from `req.body`, e.g.
 // { example: { title: '', text: 'foo' } } -> { example: { text: 'foo' } }
@@ -87,7 +88,7 @@ router.patch('/products/:id', removeBlanks, (req, res, next) => {
       // pass the `req` object and the Mongoose record to `requireOwnership`
       // it will throw an error if the current user isn't the owner
       //    requireOwnership(req, product)
-
+      requireOwnership(req, product)
       // pass the result of Mongoose's `.update` to the next `.then`
       return product.updateOne(req.body.product)
     })
@@ -105,6 +106,7 @@ router.delete('/products/:id', (req, res, next) => {
     .then(product => {
       // throw an error if current user doesn't own `example`
       // requireOwnership(req, example)
+      requireOwnership(req, product)
       // delete the example ONLY IF the above didn't throw
       product.deleteOne()
     })

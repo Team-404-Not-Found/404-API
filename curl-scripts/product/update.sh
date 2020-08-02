@@ -2,7 +2,7 @@
 
 API="https://protected-gorge-91362.herokuapp.com"
 URL_PATH="/products"
-ID="5f10e3b265a6560017178f7e"
+ID="5f10b61d9ae506a0f0d43c96"
 
 curl "${API}${URL_PATH}/${ID}" \
   --include \
@@ -15,9 +15,10 @@ curl "${API}${URL_PATH}/${ID}" \
     "description": "'"${DESCRIPTION}"'",
     "imageUrl": "'"${IMAGEURL}"'",
     "category": "'"${CATEGORY}"'",
-    "inStock": "'"${INSTOCK}"'",
+    "inCart": "'"${INCART}"'",
     "quantity": "'"${QUANTITY}"'",
-    "seller": "'"${SELLER}"'"
+    "seller": "'"${SELLER}"'",
+    "owner": "'"${OWNER}"'"
   }
 }'
 
