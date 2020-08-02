@@ -64,7 +64,6 @@ router.post('/carts/:id', (req, res, next) => {
 // PATCH
 // PATCH / cart
 router.patch('/carts/:id/item/:item_id', (req, res, next) => {
-  console.log('are you even here?')
   let productData
   const cartId = req.params.id
   const productId = req.params.item_id
@@ -72,7 +71,6 @@ router.patch('/carts/:id/item/:item_id', (req, res, next) => {
     Cart.findById(cartId)
       .then(handle404)
       .then(res => {
-        console.log(res, 'peanuts are a nice thing for elephants')
         console.log(res.product.id(productId))
         return res.save()
       })
