@@ -87,7 +87,7 @@ router.patch('/products/:id', removeBlanks, (req, res, next) => {
     .then(product => {
       // pass the `req` object and the Mongoose record to `requireOwnership`
       // it will throw an error if the current user isn't the owner
-      //  requireOwnership(req, product)
+      requireOwnership(req, product)
       // pass the result of Mongoose's `.update` to the next `.then`
       return product.updateOne(req.body.product)
     })
@@ -104,7 +104,7 @@ router.delete('/products/:id', (req, res, next) => {
     .then(handle404)
     .then(product => {
       // throw an error if current user doesn't own `example`
-      // requireOwnership(req, product)
+      requireOwnership(req, product)
       // delete the example ONLY IF the above didn't throw
       product.deleteOne()
     })
