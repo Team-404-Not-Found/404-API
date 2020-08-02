@@ -41,7 +41,7 @@ router.post('/carts/:id', (req, res, next) => {
         productData = res
         return res
       })
-      .then(() => console.log(productData))
+      // .then(() => console.log(productData))
       .catch(next)
 
     Cart.findById(cartId)
@@ -74,7 +74,7 @@ router.patch('/carts/:id/item/:item_id', (req, res, next) => {
         console.log(res.product.id(productId))
         return res.save()
       })
-      .then(() => console.log(productData))
+      // .then(() => console.log(productData))
       .catch(next)
   }
 })
